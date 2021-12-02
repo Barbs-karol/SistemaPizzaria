@@ -1,14 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Utilitarios;
 
-/**
- *
- * @author USER-64
- */
+
 public class Conexao {
+    private final String URL = "jdbc:msql://localhost:3306/pizzaria";
+    private final String Driver = "";
+    private final String Usuario = "";
+    private final String Senha = "";
     
+    public Conexao (){
+        
+        
+    }
+    
+    public Connection getConnection(){
+        return null;
+    }
 }
