@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USER-64/OneDrive/Documentos/NetBeansProjects/Pizzaria/src/Utilitarios/FundoTela.java</file>
-            <file>file:/C:/Users/USER-64/OneDrive/Documentos/NetBeansProjects/Pizzaria/src/Utilitarios/Conexao.java</file>
-            <file>file:/C:/Users/USER-64/OneDrive/Documentos/NetBeansProjects/Pizzaria/src/Utilitarios/Corretores.java</file>
-            <file>file:/C:/Users/USER-64/OneDrive/Documentos/NetBeansProjects/Pizzaria/src/GUI/Principal.java</file>
+            <file>file:/C:/Users/USER-64/OneDrive/Documentos/NetBeansProjects/SistemaPizzaria-main/src/GUI/Principal.java</file>
+            <file>file:/C:/Users/USER-64/OneDrive/Documentos/NetBeansProjects/SistemaPizzaria-main/src/Beans/ClienteBeans.java</file>
+            <file>file:/C:/Users/USER-64/OneDrive/Documentos/NetBeansProjects/SistemaPizzaria-main/src/GUI/ClienteTela.java</file>
+            <file>file:/C:/Users/USER-64/OneDrive/Documentos/NetBeansProjects/SistemaPizzaria-main/src/Utilitarios/Conexao.java</file>
         </group>
     </open-files>
 </project-private>
