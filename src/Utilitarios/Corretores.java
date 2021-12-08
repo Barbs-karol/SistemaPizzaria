@@ -17,7 +17,7 @@ public class Corretores {
     
     public static String ConverterParaJava (String Data) {
         
-        return Data.substring(8, 10) + "-" + Data.substring(5, 7) + "-" + Data.substring(0,4);
+        return Data.substring(8, 10) + "/" + Data.substring(5, 7) + "/" + Data.substring(0,4);
     }
     
       public static void main (String args []) {
