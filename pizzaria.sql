@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01-Dez-2021 às 14:36
--- Versão do servidor: 8.0.25
--- versão do PHP: 8.0.12
+-- Tempo de geração: 08-Dez-2021 às 19:25
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cardapio` (
-  `car_cod` int NOT NULL,
+  `car_cod` int(11) NOT NULL,
   `car_descricao` varchar(80) NOT NULL,
   `car_tipo` varchar(80) NOT NULL,
   `car_valor` decimal(10,2) NOT NULL
@@ -48,7 +48,7 @@ INSERT INTO `cardapio` (`car_cod`, `car_descricao`, `car_tipo`, `car_valor`) VAL
 --
 
 CREATE TABLE `clientes` (
-  `cli_cod` int NOT NULL,
+  `cli_cod` int(11) NOT NULL,
   `cli_nome` varchar(80) NOT NULL,
   `cli_rua` varchar(80) NOT NULL,
   `cli_bairro` varchar(80) NOT NULL,
@@ -61,7 +61,10 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`cli_cod`, `cli_nome`, `cli_rua`, `cli_bairro`, `cli_telefone`, `cli_data_cad`) VALUES
-(1, 'João', 'Rua X', 'Bairro Z', '988455046', '2021-11-01');
+(1, 'João', 'Rua X', 'Bairro Z', '988455046', '2021-11-01'),
+(2, 'barbara', 'rua', 'bairro', '(12) 98877-5565', '2021-12-08'),
+(6, 'testee', 'y', 'x', '(55) 55555-5555', '2021-12-08'),
+(7, 'testeeee', 's', 's', '(55) 55555-5555', '2021-12-08');
 
 -- --------------------------------------------------------
 
@@ -70,7 +73,7 @@ INSERT INTO `clientes` (`cli_cod`, `cli_nome`, `cli_rua`, `cli_bairro`, `cli_tel
 --
 
 CREATE TABLE `entregador` (
-  `ent_cod` int NOT NULL,
+  `ent_cod` int(11) NOT NULL,
   `ent_nome` varchar(80) NOT NULL,
   `ent_status` varchar(80) NOT NULL,
   `ent_data_cad` date NOT NULL
@@ -90,7 +93,7 @@ INSERT INTO `entregador` (`ent_cod`, `ent_nome`, `ent_status`, `ent_data_cad`) V
 --
 
 CREATE TABLE `funcionarios` (
-  `fun_cod` int NOT NULL,
+  `fun_cod` int(11) NOT NULL,
   `fun_nome` varchar(80) NOT NULL,
   `fun_cargo` varchar(80) NOT NULL,
   `fun_permissao` varchar(80) NOT NULL,
@@ -111,13 +114,13 @@ INSERT INTO `funcionarios` (`fun_cod`, `fun_nome`, `fun_cargo`, `fun_permissao`,
 --
 
 CREATE TABLE `item` (
-  `item_cod` int NOT NULL,
-  `item_ent_cod` int NOT NULL,
-  `item_fun_cod` int NOT NULL,
-  `item_cli_cod` int NOT NULL,
-  `item_ped_cod` int NOT NULL,
-  `item_car_cod` int NOT NULL,
-  `item_quantidade` int NOT NULL
+  `item_cod` int(11) NOT NULL,
+  `item_ent_cod` int(11) NOT NULL,
+  `item_fun_cod` int(11) NOT NULL,
+  `item_cli_cod` int(11) NOT NULL,
+  `item_ped_cod` int(11) NOT NULL,
+  `item_car_cod` int(11) NOT NULL,
+  `item_quantidade` int(11) NOT NULL
 );
 
 -- --------------------------------------------------------
@@ -127,20 +130,21 @@ CREATE TABLE `item` (
 --
 
 CREATE TABLE `pedidos` (
-  `ped_cod` int NOT NULL,
+  `ped_cod` int(11) NOT NULL,
   `ped_data` date NOT NULL,
   `ped_total` decimal(10,2) NOT NULL,
-  `ped_cli_cod` int NOT NULL,
-  `ped_fun_cod` int NOT NULL,
-  `ped_ent_cod` int NOT NULL
+  `ped_cli_cod` int(11) NOT NULL,
+  `ped_fun_cod` int(11) NOT NULL,
+  `ped_ent_cod` int(11) NOT NULL,
+  `ped_status` varchar(50) NOT NULL
 );
 
 --
 -- Extraindo dados da tabela `pedidos`
 --
 
-INSERT INTO `pedidos` (`ped_cod`, `ped_data`, `ped_total`, `ped_cli_cod`, `ped_fun_cod`, `ped_ent_cod`) VALUES
-(2, '2021-11-10', '60.00', 1, 1, 1);
+INSERT INTO `pedidos` (`ped_cod`, `ped_data`, `ped_total`, `ped_cli_cod`, `ped_fun_cod`, `ped_ent_cod`, `ped_status`) VALUES
+(2, '2021-11-10', '60.00', 1, 1, 1, '');
 
 --
 -- Índices para tabelas despejadas
@@ -198,37 +202,37 @@ ALTER TABLE `pedidos`
 -- AUTO_INCREMENT de tabela `cardapio`
 --
 ALTER TABLE `cardapio`
-  MODIFY `car_cod` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `car_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `cli_cod` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cli_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `entregador`
 --
 ALTER TABLE `entregador`
-  MODIFY `ent_cod` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ent_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `funcionarios`
 --
 ALTER TABLE `funcionarios`
-  MODIFY `fun_cod` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `fun_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_cod` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `item_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `ped_cod` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ped_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restrições para despejos de tabelas
@@ -238,19 +242,19 @@ ALTER TABLE `pedidos`
 -- Limitadores para a tabela `item`
 --
 ALTER TABLE `item`
-  ADD CONSTRAINT `ItemCardapio` FOREIGN KEY (`item_car_cod`) REFERENCES `cardapio` (`car_cod`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `ItemCliente` FOREIGN KEY (`item_cli_cod`) REFERENCES `clientes` (`cli_cod`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `ItemEntregador` FOREIGN KEY (`item_ent_cod`) REFERENCES `entregador` (`ent_cod`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `ItemFuncionario` FOREIGN KEY (`item_fun_cod`) REFERENCES `funcionarios` (`fun_cod`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `ItemPedido` FOREIGN KEY (`item_ped_cod`) REFERENCES `pedidos` (`ped_cod`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `ItemCardapio` FOREIGN KEY (`item_car_cod`) REFERENCES `cardapio` (`car_cod`),
+  ADD CONSTRAINT `ItemCliente` FOREIGN KEY (`item_cli_cod`) REFERENCES `clientes` (`cli_cod`),
+  ADD CONSTRAINT `ItemEntregador` FOREIGN KEY (`item_ent_cod`) REFERENCES `entregador` (`ent_cod`),
+  ADD CONSTRAINT `ItemFuncionario` FOREIGN KEY (`item_fun_cod`) REFERENCES `funcionarios` (`fun_cod`),
+  ADD CONSTRAINT `ItemPedido` FOREIGN KEY (`item_ped_cod`) REFERENCES `pedidos` (`ped_cod`);
 
 --
 -- Limitadores para a tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  ADD CONSTRAINT `ClientePedido` FOREIGN KEY (`ped_cli_cod`) REFERENCES `clientes` (`cli_cod`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `EntregadorPedido` FOREIGN KEY (`ped_ent_cod`) REFERENCES `entregador` (`ent_cod`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `FuncionarioPedido` FOREIGN KEY (`ped_fun_cod`) REFERENCES `funcionarios` (`fun_cod`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `ClientePedido` FOREIGN KEY (`ped_cli_cod`) REFERENCES `clientes` (`cli_cod`),
+  ADD CONSTRAINT `EntregadorPedido` FOREIGN KEY (`ped_ent_cod`) REFERENCES `entregador` (`ent_cod`),
+  ADD CONSTRAINT `FuncionarioPedido` FOREIGN KEY (`ped_fun_cod`) REFERENCES `funcionarios` (`fun_cod`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
